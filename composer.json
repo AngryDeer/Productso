@@ -1,0 +1,46 @@
+{
+    "name": "Angrydeer/Productso",
+    "type": "library",
+    "description": "Manage products and categories in Laravel 5 with Sleeping-owl admin panel",
+    "keywords": [
+        "Angrydeer",
+        "Productso"
+    ],
+    "homepage": "https://github.com/Angrydeer/Productso",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AngryDeer",
+            "email": "dimkin.pivovarov@gmail.com",
+            "homepage": "http://angrydeer.ru",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1",
+        "squizlabs/php_codesniffer": "~2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Angrydeer\\Productso\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Angrydeer\\Productso\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

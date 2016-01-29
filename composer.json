@@ -16,7 +16,7 @@
             "role": "Developer"
         }
     ],
-
+    "minimum-stability": "dev",
     "require": {
         "illuminate/support": "~5.1",
         "php" : ">=5.4.0",

@@ -14,8 +14,6 @@
  */
 ?>
 
-{{--@extends('layouts.master')--}}
-{{--@section('body')--}}
 
     @if($many)
         <h1>Пример меню</h1>
@@ -55,5 +53,5 @@
         <li class="ibl">->{{$node->name}}</li>
     @endif
 
-{{--@stop--}}
+
 

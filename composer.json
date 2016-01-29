@@ -1,6 +1,6 @@
 {
-    "name": "Angrydeer/Productso",
-    "type": "library",
+    "name": "angrydeer/productso",
+    "type": "package",
     "description": "Manage products and categories in Laravel 5 with Sleeping-owl admin panel",
     "keywords": [
         "Angrydeer",

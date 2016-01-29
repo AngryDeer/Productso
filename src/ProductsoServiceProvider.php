@@ -20,7 +20,7 @@ class ProductsoServiceProvider extends ServiceProvider
             __DIR__.'/migrations/' => base_path('/database/migrations'),
             __DIR__.'/published/soadmin/' => base_path('/app/Admin'),
             __DIR__.'/resources/views' => resource_path('views/vendor/Productso'),
-            __DIR__.'/published/assets' => public_path('vendor/Productso')
+//            __DIR__.'/published/assets' => public_path('vendor/Productso')
         ], 'category');
 
     }

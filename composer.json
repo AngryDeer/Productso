@@ -17,18 +17,11 @@
         }
     ],
 
-    "repositories": [
-        {
-            "url": "https://github.com/AngryGantz/admin.git",
-            "type": "git"
-        }
-    ],
-
     "require": {
         "illuminate/support": "~5.1",
         "php" : ">=5.4.0",
-        "kalnoy/nestedset": "^4.0",
-        "sleeping-owl/admin": "dev-fixSentinelfix52"
+        "kalnoy/nestedset": "^4.0"
+
     },
     "require-dev": {
         "phpunit/phpunit" : "4.*",

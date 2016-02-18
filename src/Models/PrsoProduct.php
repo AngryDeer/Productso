@@ -2,17 +2,15 @@
 
 namespace Angrydeer\Productso\Models;
 
-use Kalnoy\Nestedset\Node;
+use Illuminate\Database\Eloquent\Model;
 use Angrydeer\Attachfiles\AttachableTrait;
 use Angrydeer\Attachfiles\AttachableInterface;
 use Request;
 use Sentinel;
 
-class PrsoCategory extends Node implements AttachableInterface
+class PrsoProduct extends Model implements AttachableInterface
 {
     use AttachableTrait;
-
-    public static $productPerPage = 20;
 
     /**
      * The attributes that are mass assignable.
@@ -20,20 +18,19 @@ class PrsoCategory extends Node implements AttachableInterface
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', '_lft', '_rgt', 'parent_id', 'note', 'desc', 'showtop', 'showside', 'showbottom', 'showcontent',
+        'name', 'slug', 'category_id', 'cost',  'note', 'description', 'status', 'artikul', 'views', 'show', 'complected', 'complect_id'
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function products()
+    public function categories()
     {
-        return $this->belongsToMany('Angrydeer\Productso\Models\PrsoProduct');
+        return $this->belongsToMany('Angrydeer\Productso\Models\PrsoCategory');
     }
 
-    /**
-     * @param $slug
-     */
+    public function parentCategories()
+    {
+        return $this->belongsToMany('Angrydeer\Productso\Models\PrsoCategory');
+    }
+
     public function setSlugAttribute($slug)
     {
 
@@ -55,18 +52,11 @@ class PrsoCategory extends Node implements AttachableInterface
         $this->attributes['slug']=$slug;
     }
 
-    /**
-     * @param $value
-     * @return array
-     */
     public function getPhotosAttribute($value)
     {
         return array_pluck($this->attaches()->get()->toArray(), 'filename');
     }
 
-    /**
-     * @param $images
-     */
     public function setPhotosAttribute($images)
     {
         $imgtitles = Request::get('imgtitle');
@@ -91,9 +81,20 @@ class PrsoCategory extends Node implements AttachableInterface
         $this->keepOnly($images);
     }
 
-    public static function getRootTop()
+
+    public function setCategoriesAttribute($categories)
     {
-        return self::where('showtop', true)->whereIsRoot()->get();
+        // перепрописываем отношения с таблицей категорий
+        $this->categories()->detach();
+        if ( ! $categories) return;
+        if ( ! $this->exists) $this->save();
+        $this->categories()->attach($categories);
     }
+
+    public function getCategoriesAttribute($categories)
+    {
+        return array_pluck($this->categories()->get()->toArray(), 'id');
+    }
+
 
 }
